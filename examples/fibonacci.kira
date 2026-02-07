@@ -1,0 +1,39 @@
+# Fibonacci Sequence in Kira
+# Demonstrates recursion and functions
+
+fn fib(n) {
+    if n <= 1 {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+
+# Calculate first 15 Fibonacci numbers
+println("Fibonacci Sequence:")
+for i in range(15) {
+    print(fib(i))
+    print(" ")
+}
+println("")
+
+# Iterative version (faster)
+fn fib_iter(n) {
+    if n <= 1 {
+        return n
+    }
+    let a = 0
+    let b = 1
+    for i in range(n - 1) {
+        let temp = a + b
+        a = b
+        b = temp
+    }
+    return b
+}
+
+println("\nIterative (faster):")
+for i in range(20) {
+    print(fib_iter(i))
+    print(" ")
+}
+println("")

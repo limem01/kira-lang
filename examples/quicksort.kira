@@ -1,0 +1,39 @@
+# Quicksort Algorithm in Kira
+# Demonstrates arrays, recursion, and higher-order patterns
+
+fn quicksort(arr) {
+    if len(arr) <= 1 {
+        return arr
+    }
+    
+    let pivot = arr[0]
+    let less = []
+    let equal = []
+    let greater = []
+    
+    for x in arr {
+        if x < pivot {
+            push(less, x)
+        } else {
+            if x == pivot {
+                push(equal, x)
+            } else {
+                push(greater, x)
+            }
+        }
+    }
+    
+    return quicksort(less) + equal + quicksort(greater)
+}
+
+# Test it
+let numbers = [64, 34, 25, 12, 22, 11, 90, 5, 77, 30]
+println("Original: " + str(numbers))
+
+let sorted_nums = quicksort(numbers)
+println("Sorted:   " + str(sorted_nums))
+
+# Works with any comparable types
+let words = ["banana", "apple", "cherry", "date", "elderberry"]
+println("\nOriginal words: " + str(words))
+println("Sorted words:   " + str(quicksort(words)))

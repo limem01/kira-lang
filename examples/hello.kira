@@ -1,0 +1,9 @@
+# Hello World in Kira
+# The classic first program
+
+println("Hello, World!")
+println("Welcome to Kira!")
+
+# Variables
+let name = "Khalil"
+println("Hello, " + name + "!")

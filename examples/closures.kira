@@ -1,0 +1,71 @@
+# Closures and Higher-Order Functions in Kira
+# Demonstrates lexical scoping and first-class functions
+
+# A closure that remembers its environment
+fn make_counter() {
+    let count = 0
+    fn increment() {
+        count = count + 1
+        return count
+    }
+    return increment
+}
+
+let counter1 = make_counter()
+let counter2 = make_counter()
+
+println("Counter 1: " + str(counter1()))  # 1
+println("Counter 1: " + str(counter1()))  # 2
+println("Counter 1: " + str(counter1()))  # 3
+println("Counter 2: " + str(counter2()))  # 1 (separate state)
+
+# Higher-order function: map
+fn map(arr, f) {
+    let result = []
+    for x in arr {
+        push(result, f(x))
+    }
+    return result
+}
+
+fn double(x) { x * 2 }
+fn square(x) { x * x }
+
+let nums = [1, 2, 3, 4, 5]
+println("\nOriginal: " + str(nums))
+println("Doubled:  " + str(map(nums, double)))
+println("Squared:  " + str(map(nums, square)))
+
+# Higher-order function: filter
+fn filter(arr, predicate) {
+    let result = []
+    for x in arr {
+        if predicate(x) {
+            push(result, x)
+        }
+    }
+    return result
+}
+
+fn is_even(x) { x % 2 == 0 }
+fn is_positive(x) { x > 0 }
+
+let mixed = [-3, -1, 0, 2, 4, 5, 7, 8]
+println("\nOriginal:  " + str(mixed))
+println("Evens:     " + str(filter(mixed, is_even)))
+println("Positives: " + str(filter(mixed, is_positive)))
+
+# Higher-order function: reduce
+fn reduce(arr, f, initial) {
+    let acc = initial
+    for x in arr {
+        acc = f(acc, x)
+    }
+    return acc
+}
+
+fn add(a, b) { a + b }
+fn multiply(a, b) { a * b }
+
+println("\nSum of [1,2,3,4,5]: " + str(reduce(nums, add, 0)))
+println("Product of [1,2,3,4,5]: " + str(reduce(nums, multiply, 1)))
