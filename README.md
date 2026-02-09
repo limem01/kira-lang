@@ -309,9 +309,3 @@ MIT License - see [LICENSE](LICENSE)
 ## Author
 
 **Khalil Limem**
-
----
-
-<p align="center">
-  <sub>Built with ❤️ as a learning project in compiler construction</sub>
-</p>
